@@ -16,6 +16,6 @@ export default new Vuex.Store({
 		auth,
 		cart,
 		products,
-		messages
-	}
+		messages,
+	},
 });

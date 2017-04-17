@@ -5,53 +5,51 @@ const state = {
 		messageClass: '',
 		message: '',
 		timeoutEvent: null,
-	}
-}
+	},
+};
 
 const mutations = {
-	'ADD_MESSAGE' (state, {message, messageClass, autoClose}) {
+	ADD_MESSAGE(state, { message, messageClass/*, autoClose*/ }) {
 		state.messageGroup = {
 			messageClass,
-			message
-		}
+			message,
+		};
 
 		if (state.timeoutEvent) {
 			clearTimeout(state.timeoutEvent);
 		}
-		state.timeoutEvent = setTimeout(function() {
+		state.timeoutEvent = setTimeout(() => {
 			state.messageGroup = {
 				messageClass: '',
-				message: ''
-			}
+				message: '',
+			};
 		}, 5000);
 	},
-	'CLEAR_MESSAGE' (state) {
+	CLEAR_MESSAGE(state) {
 		state.messageGroup = {
 			messageClass: '',
-			message: ''
-		}
-	}
-}
+			message: '',
+		};
+	},
+};
 
 const actions = {
 	// Don't need action for now
-	addMessage({commit}, obj) {
+	addMessage({ commit }, obj) {
 		commit('ADD_MESSAGE', obj);
 	},
-	clearMessage({commit}) {
+	clearMessage({ commit }) {
 		commit('CLEAR_MESSAGE');
-	}
-}
+	},
+};
 
 const getters = {
-	messages: (state) => {
-		return state.messageGroup;
-	}
-}
+	messages: (state) => state.messageGroup,
+};
 
 export default {
 	state,
 	mutations,
 	actions,
-	getters
-}
+	getters,
+};

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import VueResource from 'vue-resource';
+// import VueResource from 'vue-resource';
 
 import { routes } from './routes';
 import store from './stores/store';
@@ -10,13 +10,18 @@ import App from './App.vue';
 
 Vue.use(VueRouter);
 
-
-firebaseListener(authStatusChange);
-
+firebaseListener((loggedIn, user) => {
+	if (store) {
+		store.commit('AUTH_STATUS_CHANGE');
+		if (user) {
+			store.dispatch('getShoppingCart', { uid: user.uid, currentCart: store.getters.cartItemList });
+		}
+	}
+});
 
 const router = new VueRouter({
 	mode: 'history',
-	routes
+	routes,
 });
 
 // router.beforeEach((to, from, next) => {
@@ -27,22 +32,10 @@ const router = new VueRouter({
 //     }
 // });
 
-
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App)
-})
-
-function authStatusChange(loggedIn, user) {
-	if (store) {
-		store.commit('AUTH_STATUS_CHANGE');
-		if (user) {
-			store.dispatch('getShoppingCart', {uid: user.uid, currentCart: store.getters.cartItemList});
-		}
-	}
-	
-}
-
+export default new Vue({
+	el: '#app',
+	router,
+	store,
+	render: h => h(App),
+});
 

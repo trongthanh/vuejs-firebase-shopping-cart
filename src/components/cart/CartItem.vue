@@ -13,15 +13,14 @@
 		</td>
 		<td data-th="Price">{{ cartItem.price }}</td>
 		<td data-th="Quantity">
-			<input type="number" class="form-control text-center" 
-				:value="cartItem.quantity" 
-
+			<input type="number" class="form-control text-center"
+				:value="cartItem.quantity"
 				@input="updateQuantity"
 				min="0">
 		</td>
 		<td data-th="Subtotal" class="text-center">${{ subtotal }}</td>
 		<td class="actions" data-th="">
-			<button class="btn btn-danger btn-sm" @click="removeItem"><i class="fa fa-trash-o"></i></button>								
+			<button class="btn btn-danger btn-sm" @click="removeItem"><i class="fa fa-trash-o"></i></button>
 		</td>
 	</tr>
 </template>
@@ -36,7 +35,7 @@
 			},
 			// itemQuantity: {
 			// 	get() {
-			// 		return 
+			// 		return
 			// 	}
 			// }
 		},
@@ -45,17 +44,17 @@
 			removeItem() {
 				let vm = this;
 				this.removeItemInCart({
-					item: vm.cartItem
+					item: vm.cartItem,
 				});
 			},
 			updateQuantity(event) {
 				let vm = this;
 				this.updateCart({
 					item: vm.cartItem,
-					quantity: parseInt(event.target.value),
-					isAdd: false
+					quantity: parseInt(event.target.value, 10),
+					isAdd: false,
 				});
-			}
-		}
-	}
+			},
+		},
+	};
 </script>

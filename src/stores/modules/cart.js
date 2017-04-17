@@ -29,12 +29,12 @@ const state = {
 		// 	quantity: 20,
 		// 	description: "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
 		// }
-	]
-}
+	],
+};
 
 const mutations = {
-	'UPDATE_CART' (state, {item, quantity, isAdd}) {
-		const record = state.cartItemList.find(element => element.id == item.id);
+	UPDATE_CART(state, { item, quantity, isAdd }) {
+		const record = state.cartItemList.find(element => element.id === item.id);
 		if (record) {
 			if (isAdd) {
 				record.quantity += quantity;
@@ -44,43 +44,41 @@ const mutations = {
 		} else {
 			state.cartItemList.push({
 				...item,
-				quantity
+				quantity,
 			});
 		}
 	},
-	'SET_CART' (state, productList) {
+	SET_CART(state, productList) {
 		if (productList) {
 			state.cartItemList = productList;
 		}
 	},
-	'REMOVE_CART_ITEM' (state, {item}) {
-		const record = state.cartItemList.find(element => element.id == item.id);
+	REMOVE_CART_ITEM(state, { item }) {
+		const record = state.cartItemList.find(element => element.id === item.id);
 		state.cartItemList.splice(state.cartItemList.indexOf(record), 1);
-	}
-}
+	},
+};
 
 const actions = {
-	clearCart: ({commit}) => {
+	clearCart: ({ commit }) => {
 		commit('SET_CART', []);
-	}
-}
+	},
+};
 
 const getters = {
-	cartItemList: (state) => {
-		return state.cartItemList;
-	},
+	cartItemList: (state) => state.cartItemList,
 	cartValue: (state) => {
 		let res = 0;
-		state.cartItemList.map((item, idx) => {
+		state.cartItemList.forEach((item/*, idx*/) => {
 			res += item.price * item.quantity;
 		});
 		return res;
-	}
-}
+	},
+};
 
 export default {
 	state,
 	mutations,
 	actions,
-	getters
-}
+	getters,
+};

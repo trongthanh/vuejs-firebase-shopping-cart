@@ -48,27 +48,27 @@
 			},
 			totalValue() {
 				let res = 0;
-				this.cartItemList.map((item, idx) => {
+				this.cartItemList.forEach((item/*, idx*/) => {
 					res += item.price * item.quantity;
 				});
 				return res;
-			}
+			},
 		},
 		components: {
-			appCartItem: CartItem
+			appCartItem: CartItem,
 		},
 		methods: {
 			...mapActions(['saveShoppingCart', 'addMessage', 'saveToTransaction', 'clearCart']),
 			checkValidCart(itemList, prodList) {
 				let isValid = true;
-				let message = "";
+				let message = '';
 
-				itemList.map((item, idx) => {
+				itemList.forEach((item/*, idx*/) => {
+					/*eslint eqeqeq:0*/
 					for (let prodIdx = 0; prodIdx < prodList.length; prodIdx++) {
 						if (prodList[prodIdx].id == item.id) {
 							if (prodList[prodIdx].quantity < item.quantity) {
-							
-								message = `Only ${prodList[prodIdx].quantity} ${item.title} available in stock`; 
+								message = `Only ${prodList[prodIdx].quantity} ${item.title} available in stock`;
 								isValid = false;
 								return;
 							}
@@ -78,62 +78,68 @@
 				});
 				return {
 					isValid,
-					message
-				}
+					message,
+				};
 			},
 			saveShoppingCartLocal() {
 				let vm = this;
 				if (this.$store.getters.isLoggedIn) {
-					let { isValid, message } = this.checkValidCart(this.$store.getters.cartItemList, this.$store.getters.products);
+					let { isValid, message } = this.checkValidCart(
+						this.$store.getters.cartItemList,
+						this.$store.getters.products,
+					);
 
 					if (isValid) {
 						this.saveShoppingCart({
 							cartItemList: vm.$store.getters.cartItemList,
-							uid: vm.$store.getters.currentUser.uid
+							uid: vm.$store.getters.currentUser.uid,
 						}).then(() => {
 							this.addMessage({
 								messageClass: 'success',
-								message: 'Your shopping cart is saved successfully'
+								message: 'Your shopping cart is saved successfully',
 							});
 							this.$router.push('/');
 						});
 					} else {
 						this.addMessage({
 							messageClass: 'danger',
-							message: message
+							message,
 						});
 					}
 				} else {
 					this.addMessage({
 						messageClass: 'warning',
-						message: 'Please login to save your cart'
+						message: 'Please login to save your cart',
 					});
 				}
 			},
 			checkout() {
 				let vm = this;
 				if (this.$store.getters.isLoggedIn) {
-					if (!this.$store.getters.cartItemList || this.$store.getters.cartItemList.length == 0) {
+					if (!this.$store.getters.cartItemList || this.$store.getters.cartItemList.length === 0) {
 						this.addMessage({
 							messageClass: 'warning',
-							message: 'Your cart is empty!'
+							message: 'Your cart is empty!',
 						});
 						return;
 					}
-					let { isValid, message } = this.checkValidCart(this.$store.getters.cartItemList, this.$store.getters.products);
+					let { isValid, message } = this.checkValidCart(
+						this.$store.getters.cartItemList,
+						this.$store.getters.products,
+					);
 
 					if (isValid) {
 						this.saveToTransaction({
 							cartItemList: vm.$store.getters.cartItemList,
-							uid: vm.$store.getters.currentUser.uid
-						}).then(()=>{
+							uid: vm.$store.getters.currentUser.uid,
+						}).then(() => {
 							this.addMessage({
 								messageClass: 'success',
-								message: 'Your order has been successfully processed!'
+								message: 'Your order has been successfully processed!',
 							});
 							this.saveShoppingCart({
 								cartItemList: [],
-								uid: vm.$store.getters.currentUser.uid
+								uid: vm.$store.getters.currentUser.uid,
 							});
 							this.clearCart();
 							this.$router.push('/');
@@ -141,26 +147,26 @@
 					} else {
 						this.addMessage({
 							messageClass: 'danger',
-							message: message
+							message,
 						});
 					}
 				} else {
 					this.addMessage({
 						messageClass: 'warning',
-						message: 'Please login to checkout'
+						message: 'Please login to checkout',
 					});
 				}
-			}
-		}
-	}
+			},
+		},
+	};
 </script>
 
 <style scoped>
 	.list-shopping-cart-leave-active {
-	  transition: all 0.4s;
+		transition: all 0.4s;
 	}
 	.list-shopping-cart-leave-to {
-	  opacity: 0;
-	  transform: translateX(50px);
+		opacity: 0;
+		transform: translateX(50px);
 	}
 </style>

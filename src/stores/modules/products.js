@@ -34,32 +34,27 @@ const state = {
 		// 	category: "macbook",
 		// 	description: "2.9 Ghz Dual-Core Intel Core i5 Broadwell Tubro boost up to 3.3 GHz with L3 3MB cache"
 		// },
-	]
-}
+	],
+};
 
 const mutations = {
-	'UPDATE_PRODUCT_LIST' (state, productList) {
+	UPDATE_PRODUCT_LIST(state, productList) {
 		state.productList = productList;
 		state.isLoading = false;
-	}
-}
+	},
+};
 
 const actions = {
-
-}
+};
 
 const getters = {
-	products: (state) => {
-		return state.productList;
-	},
-	isProductLoading: (state) => {
-		return state.isLoading;
-	}
-}
+	products: (state) => state.productList,
+	isProductLoading: (state) => state.isLoading,
+};
 
 export default {
 	state,
 	mutations,
 	actions,
-	getters
-}
+	getters,
+};
