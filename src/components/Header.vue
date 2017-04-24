@@ -1,23 +1,19 @@
 <template>
-	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<router-link to="/" class="navbar-brand">Online Store</router-link>
-			</div>
-			<ul class="nav navbar-nav navbar-right">
-				<router-link to="/login" tag="li" v-if="!isLoggedInLocal"><a>Login</a></router-link>
-				<li v-if="isLoggedInLocal" class="li-pointer"><a @click="logoutLocal">Logout {{ userEmail }}</a></li>
-				<router-link to="/register" tag="li" v-if="!isLoggedInLocal"><a>Register</a></router-link>
-				<li>
-					<router-link to="/cart" class="btn btn-success navbar-btn" tag="button">
-						Checkout <span class="badge">{{ numItems }} ($ {{ cartValueLocal }})</span>
-					</router-link>
-				</li>
-			</ul>
-		</div>
-		<!-- /.container -->
-	</nav>
+	<v-toolbar class="top-header">
+		<v-toolbar-side-icon @click.native.stop="menuClicked" class="hidden-sm-and-up"/>
+		<v-toolbar-title>PWA Shop</v-toolbar-title>
+		<v-toolbar-items class="hidden-xs-only">
+			<v-toolbar-item ripple router to="/login" v-if="!isLoggedInLocal">Login</v-toolbar-item>
+			<v-toolbar-item ripple @click="logoutLocal" v-if="isLoggedInLocal">Logout {{ userEmail }}</v-toolbar-item>
+			<v-toolbar-item ripple router to="/register" v-if="!isLoggedInLocal">Register</v-toolbar-item>
+		</v-toolbar-items>
+		<v-toolbar-items>
+			<v-toolbar-item ripple router to="/cart">
+				<v-icon>shopping_cart</v-icon>
+				{{ numItems }} ($ {{ cartValueLocal }})
+			</v-toolbar-item>
+		</v-toolbar-items>
+	</v-toolbar>
 </template>
 
 <script>
@@ -49,21 +45,17 @@
 			logoutLocal() {
 				this.logout();
 			},
+			menuClicked() {
+				this.$emit('menuClicked');
+			},
 		},
 	};
 </script>
 
 
-<style scoped lange="sass">
-	.navbar-btn a {
-		color: white;
-	}
-
-	.li-pointer {
-		cursor: pointer;
-	}
-
-	.li-pointer:hover {
-		cursor: pointer;
+<style scoped>
+	.top-header {
+		/* reduce content padding */
+		padding: 0;
 	}
 </style>

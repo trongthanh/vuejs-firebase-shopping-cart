@@ -17,6 +17,7 @@
     "vue-resource": "^1.2.1",
     "vue-router": "^2.3.0",
     "vue-spinner": "^1.0.2",
+    "vuetify": "^0.11.0",
     "vuex": "^2.2.1"
   },
   "devDependencies": {
@@ -25,7 +26,7 @@
     "babel-preset-latest": "^6.0.0",
     "babel-preset-stage-2": "^6.22.0",
     "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
+    "css-loader": "^0.28.0",
     "eslint": "^3.19.0",
     "eslint-config-nau": "^12.0.1",
     "eslint-config-vue": "^2.0.2",
@@ -34,6 +35,7 @@
     "file-loader": "^0.9.0",
     "node-sass": "^4.5.0",
     "sass-loader": "^5.0.1",
+    "style-loader": "^0.16.1",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0",

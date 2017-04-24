@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-// import VueResource from 'vue-resource';
+// FIXME: use whole UI lib lib for now
+import Vuetify from 'vuetify';
+import 'vuetify/dist/vuetify.min.css';
 
 import { routes } from './routes';
 import store from './stores/store';
@@ -9,6 +11,7 @@ import { firebaseListener } from './config/firebaseConfig';
 import App from './App.vue';
 
 Vue.use(VueRouter);
+Vue.use(Vuetify);
 
 firebaseListener((loggedIn, user) => {
 	if (store) {
