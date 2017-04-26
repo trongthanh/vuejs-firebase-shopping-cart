@@ -1,5 +1,5 @@
 <template>
-	<v-app id="app" left-fixed-sidebar>
+	<v-app id="app" class="app-shell" >
 		<app-header v-on:menuClicked="sidebarToggled"></app-header>
 		<!--<message-component></message-component>-->
 		<main>
@@ -43,7 +43,7 @@
 		</main>
 		<v-footer>
 			<div class="copy">
-				&copy; 2017. Checkout repository at <a href="https://github.com/ittus/vuejs-firebase-shopping-cart" target="_blank">Github</a>
+				&copy; 2017 PWA Shop. Checkout repository at <a href="https://github.com/trongthanh/vuejs-firebase-shopping-cart" target="_blank">Github</a>
 			</div>
 		</v-footer>
 		<div class="panel panel-warning" id="reset-store-panel">
@@ -88,16 +88,16 @@
 	html, body {
 		height: 100%;
 	}
-
-	.copy {
-		padding: 0 1rem;
+	.app-shell {
+		display: flex;
+		flex-direction: column;
 	}
 
 	.footer a {
 		color: #ffeb3b;
 	}
 	.footer a:hover {
-		color: #fdd835;
+		color: #fff;
 	}
 	/* TODO: fix this */
 	#reset-store-panel {

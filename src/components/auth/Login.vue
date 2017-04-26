@@ -1,36 +1,31 @@
 <template>
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3 col-xs-10 col-xs-offset-1">
-			<form id="login-form" role="form" style="display: block;">
-				<h3 class="text-center">Login</h3>
-					<div class="form-group">
-						<input type="email" name="email" id="email"
-						class="form-control" placeholder="Email Address"
-						v-model="email">
-					</div>
-				<div class="form-group">
-					<input type="password" name="password" id="password"
-					class="form-control" placeholder="Password"
-					v-model="password">
-				</div>
-
-				<div class="form-group">
-					<button class="btn btn-success" style="width: 100%" @click.prevent="loginWithEmailLocal">
-						Log in
-					</button>
-				</div>
-				<div class="form-group">
-					<div class="row">
-						<div class="col-lg-12">
-							<div class="text-center">
-								<router-link to="/register"><a>Register</a></router-link>
-							</div>
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
+	<v-container fluid>
+		<v-row>
+			<v-col xs12 sm6 offset-sm3 lg4 offset-lg4>
+				<v-card>
+					<v-card-title>
+						<h4 class="text-center">Login</h4>
+					</v-card-title>
+					<v-card-text>
+						<v-text-field
+							v-model="email"
+							name="email"
+							label="Email"
+							type="email"
+						></v-text-field>
+						<v-text-field
+							v-model="password"
+							name="password"
+							label="Password"
+							type="password"
+						></v-text-field>
+						<v-btn block primary light @click.native.prevent="loginWithEmailLocal">Log in</v-btn>
+						<v-btn block flat light router to="/register" >Register</v-btn>
+					</v-card-text>
+				</v-card>
+			</v-col>
+		</v-row>
+	</v-container>
 </template>
 
 <script>
@@ -49,6 +44,7 @@
 					email: this.email,
 					password: this.password,
 				};
+				console.log('data', data);
 				// this.loginWithEmail(data);
 				this.$store.dispatch('loginWithEmail', data).then((/*user*/) => {
 					// console.log(user);
