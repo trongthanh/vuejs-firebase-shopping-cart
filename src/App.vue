@@ -1,12 +1,22 @@
 <template>
 	<v-app id="app" class="app-shell" >
 		<app-header v-on:menuClicked="sidebarToggled"></app-header>
-		<!--<message-component></message-component>-->
+		<message-component></message-component>
 		<main>
 			<v-sidebar left fixed drawer v-model="sidebarOpened">
 				<v-list>
 					<v-list-item>
-						<v-list-tile>
+						<v-list-tile ripple router to="/">
+							<v-list-tile-action>
+								<v-icon>home</v-icon>
+							</v-list-tile-action>
+							<v-list-tile-content>
+								<v-list-tile-title>Home</v-list-tile-title>
+							</v-list-tile-content>
+						</v-list-tile>
+					</v-list-item>
+					<v-list-item v-if="!isLoggedInLocal">
+						<v-list-tile ripple router to="/login">
 							<v-list-tile-action>
 								<v-icon>lock</v-icon>
 							</v-list-tile-action>
@@ -15,8 +25,18 @@
 							</v-list-tile-content>
 						</v-list-tile>
 					</v-list-item>
-					<v-list-item>
-						<v-list-tile>
+					<v-list-item v-if="isLoggedInLocal">
+						<v-list-tile ripple @click.native.prevent="logout">
+							<v-list-tile-action>
+								<v-icon>exit_to_app</v-icon>
+							</v-list-tile-action>
+							<v-list-tile-content>
+								<v-list-tile-title>Logout</v-list-tile-title>
+							</v-list-tile-content>
+						</v-list-tile>
+					</v-list-item>
+					<v-list-item v-if="!isLoggedInLocal">
+						<v-list-tile ripple router to="/register">
 							<v-list-tile-action>
 								<v-icon>account_circle</v-icon>
 							</v-list-tile-action>
@@ -26,7 +46,7 @@
 						</v-list-tile>
 					</v-list-item>
 					<v-list-item>
-						<v-list-tile>
+						<v-list-tile ripple>
 							<v-list-tile-action>
 								<v-icon>info</v-icon>
 							</v-list-tile-action>
@@ -65,12 +85,17 @@
 				sidebarOpened: false,
 			};
 		},
+		computed: {
+			isLoggedInLocal() {
+				return this.$store.getters.isLoggedIn;
+			},
+		},
 		components: {
 			appHeader: Header,
 			messageComponent: MessageComponent,
 		},
 		methods: {
-			...mapActions(['getShoppingCart', 'listenToProductList']),
+			...mapActions(['getShoppingCart', 'listenToProductList', 'logout']),
 			sidebarToggled() {
 				console.log('this.sidebarOpened', this.sidebarOpened);
 				this.sidebarOpened = !this.sidebarOpened;

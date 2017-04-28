@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint . --ext js,vue",
+    "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
@@ -36,6 +37,8 @@
     "node-sass": "^4.5.0",
     "sass-loader": "^5.0.1",
     "style-loader": "^0.16.1",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.1",
     "webpack": "^2.2.0",

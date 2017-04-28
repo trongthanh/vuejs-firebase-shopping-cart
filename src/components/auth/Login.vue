@@ -47,11 +47,12 @@
 				console.log('data', data);
 				// this.loginWithEmail(data);
 				this.$store.dispatch('loginWithEmail', data).then((/*user*/) => {
+					//TODO: store user login session
 					// console.log(user);
 					this.clearMessage();
 					this.$router.push({ name: 'mainpage' });
 				}).catch((error) => {
-					console.log('register error', error);
+					console.log('Login error', error);
 
 					let messageObj = {
 						message: error.message,

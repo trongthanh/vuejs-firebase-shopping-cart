@@ -1,5 +1,5 @@
 <template>
-	<div :class="(showMessageBar?'':'hidden') + '  message-bar'">
+	<!-- <div :class="(showMessageBar?'':'hidden') + '  message-bar'">
 		<div
 			:class="messageClass">
 			<Button bsStyle='link' class="btn btn-link close-btn" @click="closeMessageBar">
@@ -8,37 +8,62 @@
 
 			<div>{{ message }}</div>
 		</div>
-	</div>
+	</div>-->
+	<v-snackbar
+		:timeout="timeout"
+		:top="vertical === 'top'"
+		:bottom="vertical === 'bottomm'"
+		:right="horizontal === 'right'"
+		:left="horizontal === 'left'"
+		:class="messageClass"
+		v-model="shown"
+	>
+		{{ message }}
+		<v-btn flat dark small @click.native="clearMessage">Close</v-btn>
+	</v-snackbar>
+
 </template>
 
 <script>
 	import { mapActions } from 'vuex';
 	export default {
+		data() {
+			return {
+				vertical: 'top',
+				horizontal: 'center',
+				timeout: 4000,
+			};
+		},
 		computed: {
-			showMessageBar() {
-				return this.$store.getters.messages.message
-					&& this.$store.getters.messages.message.length > 0;
+			shown() {
+				// console.log('showMessageBar', this.$store.getters.messages.message);
+				return !!(this.$store.getters.messages.message &&
+						this.$store.getters.messages.message.length > 0);
 			},
+
 			messageClass() {
-				let mgClass = this.$store.getters.messages.messageClass;
-				return `col-xs-12 panel panel-${mgClass} ${this.showMessageBar ? '' : 'hidden'}`;
+				// console.log('messageClass', this.$store.getters.messages.messageClass);
+				switch (this.$store.getters.messages.messageClass) {
+					case 'danger':
+						return 'red';
+					default:
+						return '';
+				}
 			},
 			message() {
+				// console.log('message', this.$store.getters.messages.message);
 				return this.$store.getters.messages.message;
 			},
 		},
 		methods: {
 			...mapActions(['clearMessage']),
-			closeMessageBar() {
-				this.clearMessage();
-			},
 		},
 	};
 </script>
 
 <style scoped>
 
-	.message-bar {
+	/*.message-bar {
 			position:fixed;
 			top:0;
 			left:50%;
@@ -76,5 +101,5 @@
 	.panel-warning {
 		background-color: #f0ad4e;
 		color: #FFF;
-	}
+	}*/
 </style>

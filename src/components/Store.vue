@@ -5,14 +5,15 @@
 		</div>
 		<div class="row action-panel" v-if="!loading">
 			<div class="col-xs-12">
-				<div class="btn-group pull-right">
+				<!--<div class="btn-group pull-right">
 					<a id="list" class="btn btn-default btn-sm" @click.prevent="changeDisplay(true)">
 						<span class="glyphicon glyphicon-th-list"></span>List
 					</a>
 					<a id="grid" class="btn btn-default btn-sm" @click.prevent="changeDisplay(false)">
 						<span class="glyphicon glyphicon-th"></span>Grid
 					</a>
-				</div>
+				</div>-->
+				<v-btn-toggle v-bind:options="toggleButtons" v-model="icon"></v-btn-toggle>
 			</div>
 		</div>
 
@@ -30,6 +31,11 @@
 	export default {
 		data() {
 			return {
+				icon: {},
+				toggleButtons: [
+					{ text: 'List', icon: 'view_list', value: 1 },
+					{ text: 'Grid', icon: 'view_module', value: 2 },
+				],
 				loaderColor: '#5cb85c',
 				loaderSize: '50px',
 				displayList: false,

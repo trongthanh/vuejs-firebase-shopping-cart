@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 // FIXME: use whole UI lib lib for now
 import Vuetify from 'vuetify';
-import 'vuetify/dist/vuetify.min.css';
+import './stylus/main.styl';
 
 import { routes } from './routes';
 import store from './stores/store';

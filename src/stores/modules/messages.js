@@ -4,8 +4,8 @@ const state = {
 		// message: 'Test'
 		messageClass: '',
 		message: '',
-		timeoutEvent: null,
 	},
+	timeoutEvent: null,
 };
 
 const mutations = {
