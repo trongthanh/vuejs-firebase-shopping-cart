@@ -1,4 +1,4 @@
-
+// T3: This file only needed when deployed the static files on app server
 const express = require('express');
 const app = express();
 const path = require('path');
