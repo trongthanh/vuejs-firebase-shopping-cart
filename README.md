@@ -37,3 +37,6 @@ for all the projects out there. If you have any ideas, just
 
 If you'd like to contribute, please fork the repository and make changes as
 you'd like. Pull requests are warmly welcome.
+
+___
+This work is licensed under a [Creative Commons Attribution 4.0 International License.](http://creativecommons.org/licenses/by/4.0/)
