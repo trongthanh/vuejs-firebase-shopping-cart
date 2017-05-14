@@ -1,5 +1,5 @@
 <template>
-	<v-toolbar class="top-header">
+	<v-toolbar fixed class="top-header">
 		<v-toolbar-side-icon @click.native.stop="menuClicked" class="hidden-sm-and-up"/>
 		<v-toolbar-title><router-link to="/">Vue Store</router-link></v-toolbar-title>
 		<v-toolbar-items class="hidden-xs-only">
@@ -10,7 +10,7 @@
 		<v-toolbar-items>
 			<v-toolbar-item ripple router to="/cart">
 				<v-icon>shopping_cart</v-icon>
-				{{ numItems }} ($ {{ cartValueLocal }})
+				{{ numItems }} (${{ cartValueLocal }})
 			</v-toolbar-item>
 		</v-toolbar-items>
 	</v-toolbar>

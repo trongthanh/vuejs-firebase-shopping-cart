@@ -2,7 +2,7 @@
 	<v-app id="app" class="app-shell" >
 		<app-header v-on:menuClicked="sidebarToggled"></app-header>
 		<message-component></message-component>
-		<main>
+		<main class="main-content">
 			<v-sidebar left fixed drawer v-model="sidebarOpened">
 				<v-list>
 					<v-list-item>
@@ -116,6 +116,11 @@
 	.app-shell {
 		display: flex;
 		flex-direction: column;
+	}
+
+	.main-content {
+		/*space for the sticky toolbar*/
+		padding-top: 64px;
 	}
 
 	.footer a {
