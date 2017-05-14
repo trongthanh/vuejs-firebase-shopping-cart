@@ -1,31 +1,31 @@
 <template>
-	<div class="container" :class="{loadingItem: loading}">
-		<div class="row text-center" v-if="loading">
-			<grid-loader :loading="loading" :color="loaderColor" :size="loaderSize"></grid-loader>
-		</div>
+	<div class="container-fluid" :class="{loadingItem: loading}">
+		<v-progress-linear v-if="loading" :indeterminate="true"></v-progress-linear>
 		<div class="row action-panel" v-if="!loading">
 			<div class="col-xs-12">
-				<!--<div class="btn-group pull-right">
+				<!--We don't support layout toggle for now
+					<div class="btn-group pull-right">
 					<a id="list" class="btn btn-default btn-sm" @click.prevent="changeDisplay(true)">
 						<span class="glyphicon glyphicon-th-list"></span>List
 					</a>
 					<a id="grid" class="btn btn-default btn-sm" @click.prevent="changeDisplay(false)">
 						<span class="glyphicon glyphicon-th"></span>Grid
 					</a>
-				</div>-->
-				<v-btn-toggle v-bind:options="toggleButtons" v-model="icon"></v-btn-toggle>
+				</div>
+				<v-btn-toggle v-bind:options="toggleButtons" v-model="icon"></v-btn-toggle>-->
 			</div>
 		</div>
 
-		<div class="is-flex" v-if="!loading">
-			<app-product-item v-for="(prod, idx) in products" :item="prod" :key="prod.id" :displayList="displayList"></app-product-item>
-		</div>
+		<v-row v-if="!loading">
+			<v-col lg3 md4 sm6  v-for="(prod, idx) in products" :key="prod.id">
+				<app-product-item :item="prod" :key="prod.id" :displayList="displayList"></app-product-item>
+			</v-col>
+		</v-row>
 
 	</div>
 </template>
 
 <script>
-	import GridLoader from 'vue-spinner/src/GridLoader.vue';
 	import ProductItem from './product/ProductItem.vue';
 
 	export default {
@@ -52,7 +52,6 @@
 		},
 		components: {
 			appProductItem: ProductItem,
-			GridLoader,
 		},
 		methods: {
 			changeDisplay(isList) {
@@ -63,24 +62,17 @@
 </script>
 
 <style>
-	.is-flex {
-		display: flex;
-		flex-wrap: wrap;
-	}
-
-	.loadingItem {
-		align-items: center;
-		justify-content: center;
-		display: flex;
-	}
-
-	.is-flex > [class*='col-'] {
-		display: flex;
-		flex-direction: column;
-	}
-
 	.action-panel {
 		margin-bottom: 10px;
 		margin-right: 5px;
+	}
+
+	.container-fluid {
+		max-width: 1360px;
+		padding: 0 1rem;
+	}
+
+	.col {
+		margin: 0.5rem 0;
 	}
 </style>

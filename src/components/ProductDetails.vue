@@ -1,44 +1,34 @@
 <template>
 	<div class="container">
-		<div class="col-md-12">
-			<div class="row text-center" v-if="loading">
-				<grid-loader :loading="loading" :color="loaderColor" :size="loaderSize" class="inline-block"></grid-loader>
-			</div>
-			<div class="thumbnail" v-if="!loading">
-				<img class="img-responsive" :src="item.thumbnail_url" alt="">
-				<div class="caption-full">
-					<h4 class="pull-right">$ {{ item.price }}</h4>
-					<h4> {{ item.title }}</h4>
-					<p> {{ item.description }} </p>
-				</div>
-				<div class="ratings">
+		<v-progress-linear v-bind:indeterminate="true" v-if="loading"></v-progress-linear>
+		<v-row>
+			<v-col xs12>
+				<h4 class="item-title">{{ item.title }}</h4>
+				<v-chip outline label class="primary primary--text price-tag">${{ item.price }}</v-chip>
+			</v-col>
+			<v-col md6 >
+				<img class="product-image" :src="item.thumbnail_url" alt="">
+			</v-col>
+			<v-col md6 >
+				<div class="add-to-cart">
+					<v-btn
+						primary light
+						@click.native="addItem"
+						:disabled="item.quantity === 0">
+						Add to cart
+					</v-btn>
 					<span>{{ item.quantity }} left in stock</span>
-					<p class="pull-right">
-						<button
-							@click="addItem"
-							:disabled="item.quantity === 0"
-							class="btn btn-success" >
-							Add to cart
-						</button>
-					</p>
-					<div class="clearfix"></div>
 				</div>
-			</div>
-		</div>
+				<p v-html="item.description"></p>
+			</v-col>
+		</v-row>
 	</div>
 </template>
 
 <script>
 	import { mapActions } from 'vuex';
-	import GridLoader from 'vue-spinner/src/GridLoader.vue';
 
 	export default {
-		data() {
-			return {
-				loaderColor: '#5cb85c',
-				loaderSize: '50px',
-			};
-		},
 		computed: {
 			item() {
 				let id = this.$route.params.id;
@@ -69,20 +59,27 @@
 				this.updateCart(order);
 			},
 		},
-		components: {
-			GridLoader,
-		},
 	};
 </script>
 
 <style scoped>
-	.caption-full {
-		padding-right: 10px;
-		padding-left: 10px;
+	.product-image {
+		width: 100%;
 	}
-	.ratings {
-		padding-right: 10px;
-		padding-left: 10px;
-		color: #d17581;
+
+	.item-title {
+		display: inline-block;
+		margin: 8px 0;
+	}
+
+	.price-tag {
+		height: auto;
+		font-size: 25px;
+		float: right;
+		margin-right: 0px;
+	}
+
+	.add-to-cart {
+		margin: -6px 6px 6px -6px;
 	}
 </style>

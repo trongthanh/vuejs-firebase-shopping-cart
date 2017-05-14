@@ -1,26 +1,25 @@
 <template>
-	<div class="col-sm-4 col-lg-4 col-md-4 item" :class="{'list-group-item': displayList}">
-		<div class="thumbnail ">
-			<img :src="item.thumbnail_url" alt="" class="grow thumbnail-image">
-			<div class="caption margin-left-sm">
-				<h4 class="pull-right">${{ item.price }}</h4>
-				<router-link :to="'/product/' + item.id" tag="h4"><a>{{ item.title }}</a></router-link>
-				<p class="truncate">{{ item.description | shortDescription}}</p>
-			</div>
-			<div class="ratings margin-left-sm">
-				<span>{{ item.quantity }} left in stock</span>
-				<p class="pull-right">
-					<button
-						class="btn btn-success"
-						:disabled="item.quantity === 0"
-						@click="addItem">
-						Add to cart
-					</button>
-				</p>
-				<div class="clearfix"></div>
-			</div>
-		</div>
-	</div>
+	<v-card>
+		<router-link :to="'/product/' + item.id" tag="a">
+			<v-card-row class="blue-grey darken-1" :img="item.thumbnail_url" height="300px">
+				<v-card-title>
+					<span class="white--text  ">{{ item.title }}</span>
+				</v-card-title>
+			</v-card-row>
+		</router-link>
+		<v-card-text class="">
+			<div v-html="shortDescription"></div>
+		</v-card-text>
+		<v-card-row actions class="teal darken-1 mt-0">
+			<span class="white--text">{{ item.quantity }} left in stock</span>
+			<v-spacer></v-spacer>
+			<v-btn icon
+				:disabled="item.quantity === 0"
+				@click.native="addItem">
+				<v-icon class="white--text">add_shopping_cart</v-icon>
+			</v-btn>
+		</v-card-row>
+	</v-card>
 </template>
 
 <script>
@@ -39,18 +38,34 @@
 				this.updateCart(order);
 			},
 		},
-		filters: {
-			shortDescription(value) {
-				if (value && value.length > 100) {
-					return `${value.substring(0, 100)}...`;
+		computed: {
+			shortDescription() {
+				// strip HTML tags first
+				let desc = this.item.description.replace(/<(?:.|\n)*?>/gm, ' ');
+				if (desc && desc.length > 100) {
+					return `${desc.substring(0, 100)}...`;
 				}
-				return value;
+				return desc;
 			},
 		},
 	};
 </script>
 
 <style scoped>
+	.card__row {
+		position: relative;
+	}
+	.card__title {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		font-weight: bold;
+		background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
+	}
+
+
+
 	div.thumbnail {
 		height: 100%;
 	}
