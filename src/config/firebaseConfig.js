@@ -1,10 +1,12 @@
 import firebase from 'firebase';
 
-
 const config = {
-	apiKey: 'AIzaSyAvE8yZMbjt6Y799fAHFOOJ-WhjdwGfK6A',
-	authDomain: 'vuejs-shopping-cart.firebaseapp.com',
-	databaseURL: 'https://vuejs-shopping-cart.firebaseio.com/',
+	apiKey: 'AIzaSyCy7L6RCmxM-8WLo-eD-Pq78fLOLvLuCvU',
+	authDomain: 'pwa-shop.firebaseapp.com',
+	databaseURL: 'https://pwa-shop.firebaseio.com',
+	projectId: 'pwa-shop',
+	storageBucket: 'pwa-shop.appspot.com',
+	messagingSenderId: '739282454167',
 };
 
 firebase.initializeApp(config);
