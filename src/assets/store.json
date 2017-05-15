@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "JS Stickers",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/jsconf-detail_1024x1024.jpg?v=1344448435",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/jsconf-detail_1024x1024.jpg",
       "price": 6.0,
       "quantity": 10,
       "category": "sticker",
@@ -12,7 +12,7 @@
     {
       "id": 2,
       "title": "Git React Angular Vue sticker pack",
-      "thumbnail_url": "https://ih1.redbubble.net/image.360539457.9059/stf,small,600x600-c,0,0,1000,1000.jpg",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/git-react-angular-vue-sticker.jpg",
       "price": 7,
       "quantity": 20,
       "category": "sticker",
@@ -21,7 +21,7 @@
     {
       "id": 3,
       "title": "Ember Stickers",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/ember-detail_1024x1024.jpg?v=1336174013",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/ember-detail_1024x1024.jpg",
       "price": 6.0,
       "quantity": 15,
       "category": "sticker",
@@ -30,7 +30,7 @@
     {
       "id": 4,
       "title": "jQuery Stickers",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/jquery-detail_1024x1024.jpg?v=1368920118",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/jquery-detail_1024x1024.jpg",
       "price": 6.0,
       "quantity": 1,
       "category": "sticker",
@@ -39,7 +39,7 @@
     {
       "id": 5,
       "title": "Sass Stickers",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/sass-detail-02_1024x1024.jpg?v=1411152591",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/sass-detail-02_1024x1024.jpg",
       "price": 6.0,
       "quantity": 0,
       "category": "sticker",
@@ -48,7 +48,7 @@
     {
       "id": 6,
       "title": "Backbone Stickers",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/backbone-detail_1024x1024.jpg?v=1440790878",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/backbone-detail_1024x1024.jpg",
       "price": 6.0,
       "quantity": 13,
       "category": "sticker",
@@ -57,7 +57,7 @@
     {
       "id": 7,
       "title": "Die Cut GitHub Stickers",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0051/4802/products/sticker-small_1024x1024.jpg?v=1368814207",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/sticker-small_1024x1024.jpg",
       "price": 2.0,
       "quantity": 20,
       "category": "sticker",
@@ -66,7 +66,7 @@
     {
       "id": 8,
       "title": "Ember Mascot",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/tomstervinyl-full_02_1024x1024.jpg?v=1408758421",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/tomstervinyl-full_02_1024x1024.jpg",
       "price": 10.0,
       "quantity": 10,
       "category": "figurine",
@@ -75,7 +75,7 @@
     {
       "id": 9,
       "title": "Octocat Figurine",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0051/4802/products/mona-2_1024x1024.jpg?v=1447180277",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/mona-2_1024x1024.jpg",
       "price": 15.0,
       "quantity": 15,
       "category": "figurine",
@@ -84,7 +84,7 @@
     {
       "id": 10,
       "title": "I [octocat] Code 2.0",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0051/4802/products/MG_1978_1024x1024.jpg?v=1314831279",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/MG_1978_1024x1024.jpg",
       "price": 25.0,
       "quantity": 5,
       "category": "tee",
@@ -93,7 +93,7 @@
     {
       "id": 11,
       "title": "Ember.js t-shirt",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/ember-shirt-front_1024x1024.png?v=1335832812",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/ember-shirt-front_1024x1024.png",
       "price": 22.0,
       "quantity": 10,
       "category": "tee",
@@ -102,7 +102,7 @@
     {
       "id": 12,
       "title": "Handlebars t-shirt",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/handlebars-shirt-front_1024x1024.png?v=1338963635",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/handlebars-shirt-front_1024x1024.png",
       "price": 22.0,
       "quantity": 10,
       "category": "tee",
@@ -111,7 +111,7 @@
     {
       "id": 13,
       "title": "Classic jQuery t-shirt",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0154/2777/products/jquery-classic-shirt-front_1024x1024.jpg?v=1335832773",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/jquery-classic-shirt-front_1024x1024.jpg",
       "price": 22,
       "quantity": 8,
       "category": "tee",
@@ -120,7 +120,7 @@
     {
       "id": 14,
       "title": "Invertocat 2.0",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0051/4802/products/blacktocat-3_1024x1024.jpg?v=1371587562",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/blacktocat-3_1024x1024.jpg",
       "price": 25.0,
       "quantity": 11,
       "category": "tee",
@@ -130,7 +130,7 @@
     {
       "id": 15,
       "title": "It's not a bug, it's a feature Mug",
-      "thumbnail_url": "https://varianto25.com/assets/img/mugs/its-not-a-bug-its-a-feature/gallery/3-its-not-a-bug-its-a-feature.jpg",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/3-its-not-a-bug-its-a-feature.jpg",
       "price": 15.0,
       "quantity": 10,
       "category": "mug",
@@ -139,7 +139,7 @@
     {
       "id": 16,
       "title": "Keep calm and write code Mug",
-      "thumbnail_url": "https://varianto25.com/assets/img/mugs/keep-calm-and-write-code/gallery/1-keep-calm-and-write-code.jpg",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/1-keep-calm-and-write-code.jpg",
       "price": 15.0,
       "quantity": 10,
       "category": "mug",
@@ -148,7 +148,7 @@
     {
       "id": 17,
       "title": "Octocat Mug",
-      "thumbnail_url": "https://cdn.shopify.com/s/files/1/0051/4802/products/white-mug-1_1024x1024.jpg?v=1371488152",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/white-mug-1_1024x1024.jpg",
       "price": 14,
       "quantity": 5,
       "category": "mug",
@@ -157,7 +157,7 @@
     {
       "id": 18,
       "title": "code:deck modern Playing Card",
-      "thumbnail_url": "https://varianto25.com/assets/img/playing-cards/code-deck-modern/gallery/3-code-deck-modern.jpg",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/3-code-deck-modern.jpg",
       "price": 15,
       "quantity": 10,
       "category": "playing-cards",
@@ -166,7 +166,7 @@
     {
       "id": 19,
       "title": "Functional programming Poster",
-      "thumbnail_url": "https://varianto25.com/assets/img/posters/functional-programming/gallery/1-functional-programming.jpg",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/1-functional-programming.jpg",
       "price": 20,
       "quantity": 10,
       "category": "poster",
@@ -175,7 +175,7 @@
     {
       "id": 20,
       "title": "Programming languages Poster",
-      "thumbnail_url": "https://varianto25.com/assets/img/posters/programming-languages/gallery/3-programming-languages.jpg",
+      "thumbnail_url": "https://pwa-shop.firebaseapp.com/assets/products/3-programming-languages.jpg",
       "price": 20,
       "quantity": 7,
       "category": "poster",
