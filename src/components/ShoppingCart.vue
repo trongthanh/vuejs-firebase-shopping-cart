@@ -1,13 +1,27 @@
 <template>
-	<div class="container">
-		<table id="cart" class="table table-hover table-condensed">
+	<div class="container-fluid">
+		<div v-if="!hasItems">
+			<h6>No items in your cart.</h6>
+			<p>
+				<v-btn primary router to="/">
+					<v-icon>chevron_left</v-icon> Continue Shopping
+				</v-btn>
+			</p>
+		</div>
+		<table id="cart" class="table table-hover table-condensed" v-if="hasItems">
 			<thead>
 				<tr>
-					<th style="width:50%">Product</th>
+					<th style="width:65%">Product</th>
 					<th style="width:10%">Price</th>
-					<th style="width:8%">Quantity</th>
-					<th style="width:22%" class="text-center">Subtotal</th>
-					<th style="width:10%"></th>
+					<th style="width:10%">
+						<span class="hidden-sm-and-down">Quantity</span>
+						<span class="hidden-md-and-up">Quan.</span>
+					</th>
+					<th style="width:10%">
+						<span class="hidden-sm-and-down">Subtotal</span>
+						<span class="hidden-md-and-up">Sub.</span>
+					</th>
+					<th style="width:5%"></th>
 				</tr>
 			</thead>
 
@@ -16,21 +30,24 @@
 			</transition-group>
 
 			<tfoot>
-				<tr class="visible-xs">
-					<td class="text-center"><strong>Total {{ totalValue }}</strong></td>
+				<tr class="hidden-md-and-up">
+					<td class="total-text" colspan="5"><strong>Total ${{ totalValue }}</strong></td>
 				</tr>
 				<tr>
-					<td>
-						<button class="btn btn-warning" @click="saveShoppingCartLocal">
-							<i class="fa fa-angle-left"></i>Save and Continue Shopping
-						</button>
-					</td>
-					<td colspan="2" class="hidden-xs"></td>
-					<td class="hidden-xs text-center"><strong>Total ${{ totalValue }}</strong></td>
-					<td>
-						<button class="btn btn-success btn-block" @click="checkout">
-							Checkout <i class="fa fa-angle-right"></i>
-						</button>
+					<td colspan="5">
+						<v-row>
+							<v-col xs12 md4>
+								<v-btn default block @click.native="saveShoppingCartLocal">
+									<v-icon>chevron_left</v-icon> Save and Continue Shopping
+								</v-btn>
+							</v-col>
+							<v-col md4 class="hidden-sm-and-down total-text"><strong>Total ${{ totalValue }}</strong></v-col>
+							<v-col xs12 md4>
+								<v-btn primary block @click.native="checkout">
+									Checkout <v-icon>chevron_right</v-icon>
+								</v-btn>
+							</v-col>
+						</v-row>
 					</td>
 				</tr>
 			</tfoot>
@@ -45,6 +62,9 @@
 		computed: {
 			cartItemList() {
 				return this.$store.getters.cartItemList;
+			},
+			hasItems() {
+				return !!this.cartItemList.length;
 			},
 			totalValue() {
 				let res = 0;
@@ -162,11 +182,23 @@
 </script>
 
 <style scoped>
+	.container-fluid {
+		max-width: 1020px;
+	}
 	.list-shopping-cart-leave-active {
 		transition: all 0.4s;
 	}
 	.list-shopping-cart-leave-to {
 		opacity: 0;
 		transform: translateX(50px);
+	}
+
+	.table.table th {
+		padding: 0;
+	}
+
+	.total-text {
+		text-align: right;
+		line-height: 48px;
 	}
 </style>

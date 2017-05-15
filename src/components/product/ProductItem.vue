@@ -7,8 +7,8 @@
 				</v-card-title>
 			</v-card-row>
 		</router-link>
-		<v-card-text class="">
-			<div v-html="shortDescription"></div>
+		<v-card-text>
+			<div v-html="shortDescription" class="clamp-lines"></div>
 		</v-card-text>
 		<v-card-row actions class="teal darken-1 mt-0">
 			<span class="white--text">{{ item.quantity }} left in stock</span>
@@ -64,55 +64,12 @@
         background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.8) 100%);
 	}
 
-
-
-	div.thumbnail {
-		height: 100%;
+	.clamp-lines {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 	}
 
-	.favourite-icon {
-		font-size: 25px;
-	}
 
-	.ratings {
-		padding-right: 10px;
-		padding-left: 10px;
-		color: #d17581;
-	}
-
-	.grow {
-		transition: all .2s ease-in-out;
-	}
-	.thumbnail:hover .grow {
-		transform: scale(1.1);
-	}
-
-	.item.list-group-item {
-		border: none;
-		float: none;
-		width: 100%;
-		background-color: #fff;
-		margin-bottom: 10px;
-	}
-
-	.thumbnail-image {
-		padding: 15px;
-	}
-	.list-group-item .thumbnail-image {
-		margin-right: 10px;
-		max-height: 150px;
-	}
-
-	.item.list-group-item .thumbnail {
-		margin-bottom: 0px;
-
-	}
-
-	.item.list-group-item img {
-		float: left;
-	}
-
-	.item.list-group-item:after {
-		clear: both;
-	}
 </style>
