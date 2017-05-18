@@ -1,0 +1,21 @@
+{
+  "short_name": "Vue Shop",
+  "name": "Vue Shop - Mobile Shopping",
+  "icons": [
+    {
+      "src": "assets/logo-144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "assets/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.html",
+  "theme_color": "#00796b",
+  "background_color": "#b2dfdb",
+  "display": "standalone",
+  "orientation": "portrait"
+}
