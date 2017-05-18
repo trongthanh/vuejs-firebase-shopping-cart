@@ -3,6 +3,9 @@
   "description": "A shopping cart with VueJS",
   "version": "1.0.0",
   "author": "ittus <vuminhthang.cm@gmail.com>",
+  "contributors": [
+    "Thanh Tran <trongthanh-AT-gmail.com> (https://int3ractive.com)"
+  ],
   "private": true,
   "scripts": {
     "lint": "eslint . --ext js,vue",
