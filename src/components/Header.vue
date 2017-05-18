@@ -9,8 +9,7 @@
 		</v-toolbar-items>
 		<v-toolbar-items>
 			<v-toolbar-item ripple router to="/cart">
-				<v-icon>shopping_cart</v-icon>
-				{{ numItems }} (${{ cartValueLocal }})
+				<v-icon large v-badge="{value: numItems, overlap: true}" class="orange--after">shopping_cart</v-icon>
 			</v-toolbar-item>
 		</v-toolbar-items>
 	</v-toolbar>
