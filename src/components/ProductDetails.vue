@@ -20,6 +20,13 @@
 					<span>{{ item.quantity }} left in stock</span>
 				</div>
 				<p v-html="item.description"></p>
+				<div class="share-button">
+					<v-btn
+						primary light
+						@click.native="shareItem">
+						<v-icon>share</v-icon> Share this item
+					</v-btn>
+				</div>
 			</v-col>
 		</v-row>
 	</div>
@@ -58,6 +65,19 @@
 				// console.log(order);
 				this.updateCart(order);
 			},
+			shareItem() {
+				const shareInfo = {
+					title: `${this.item.title} - ${document.title}`,
+					text: this.item.description,
+					url: window.location.href,
+				};
+				console.log('Share object', JSON.stringify(shareInfo));
+
+				// Web Share API
+				navigator.share(shareInfo)
+				.then(() => console.log('Successful share'))
+				.catch(error => console.log('Error sharing:', error));
+			},
 		},
 	};
 </script>
@@ -79,7 +99,7 @@
 		margin-right: 0px;
 	}
 
-	.add-to-cart {
+	.add-to-cart, .share-button {
 		margin: -6px 6px 6px -6px;
 	}
 </style>
