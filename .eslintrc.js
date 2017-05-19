@@ -6,7 +6,11 @@ module.exports = {
 		'vue',
 		'nau',
 	],
-
+	env: {
+		'node': true,
+		'browser': true,
+		'es6': true,
+	},
 	plugins: [
 		'import',
 		'vue',

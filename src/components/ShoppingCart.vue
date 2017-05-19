@@ -1,5 +1,6 @@
 <template>
 	<div class="container-fluid">
+		<h4>Your Shopping Cart</h4>
 		<div v-if="!hasItems">
 			<h6>No items in your cart.</h6>
 			<p>

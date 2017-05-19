@@ -1,7 +1,7 @@
 <template>
 	<v-toolbar fixed class="top-header">
 		<v-toolbar-side-icon @click.native.stop="menuClicked" class="hidden-sm-and-up"/>
-		<v-toolbar-title><router-link to="/">Vue Store</router-link></v-toolbar-title>
+		<v-toolbar-title><router-link to="/">Vue Shop</router-link></v-toolbar-title>
 		<v-toolbar-items class="hidden-xs-only">
 			<v-toolbar-item ripple router to="/login" v-if="!isLoggedInLocal">Login</v-toolbar-item>
 			<v-toolbar-item ripple @click.native="logoutLocal" v-if="isLoggedInLocal">Logout {{ userEmail }}</v-toolbar-item>

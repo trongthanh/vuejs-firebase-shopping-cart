@@ -63,15 +63,22 @@
 		</main>
 		<v-footer>
 			<div class="copy">
-				&copy; 2017 PWA Shop. Checkout repository at <a href="https://github.com/trongthanh/vuejs-firebase-shopping-cart" target="_blank">Github</a>
+				&copy; 2017 Vue Shop. Checkout repository at <a href="https://github.com/trongthanh/vuejs-firebase-shopping-cart" target="_blank">Github</a>
 			</div>
 		</v-footer>
-		<div class="panel panel-warning" id="reset-store-panel">
-			<div class="panel-heading">Admin Panel (Testing purpose)</div>
-			<div class="panel-body text-center">
-				<button class="btn btn-warning">Reset Store</button>
-			</div>
-		</div>
+		<v-dialog v-model="locationRequest">
+			<v-card>
+				<v-card-row>
+					<v-card-title>Your Location</v-card-title>
+				</v-card-row>
+				<v-card-row>
+					<v-card-text>{{ locationText }}</v-card-text>
+				</v-card-row>
+				<v-card-row actions>
+					<v-btn class="green--text darken-1" flat="flat" @click.native="requestLocation">OK</v-btn>
+				</v-card-row>
+			</v-card>
+		</v-dialog>
 	</v-app>
 </template>
 
@@ -83,6 +90,9 @@
 		data() {
 			return {
 				sidebarOpened: false,
+				locationRequest: false,
+				locationApproved: false,
+				locationText: 'Please allows VueShop access your device location so that we can prioritize listing items available in ware-house nearest to you.',
 			};
 		},
 		computed: {
@@ -100,11 +110,72 @@
 				console.log('this.sidebarOpened', this.sidebarOpened);
 				this.sidebarOpened = !this.sidebarOpened;
 			},
+			requestLocation() {
+				console.log('Request Location');
+				// close the modal
+				this.locationRequest = false;
+
+				if (!this.locationApproved && navigator.geolocation) {
+					// Try HTML5 geolocation.
+					navigator.geolocation.getCurrentPosition((position) => {
+						let pos = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude,
+						};
+						let dist = '';
+						let city = '';
+						let country = '';
+						// TODO: get city name
+						// "latlng":"10.786513099999999,106.69388459999999"
+						fetch(`https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyA5axVkCHivJZaBTe8nhnIgLbRfnp5rMo0&latlng=${pos.lat},${pos.lng}`)
+							.then(result => result.json())
+							.then(json => {
+								// console.log('pos', JSON.stringify(json));
+								const addresses = json.results && json.results[0] && json.results[0].address_components;
+
+								if (addresses) {
+									addresses.forEach(address => {
+										if (address.types.includes('administrative_area_level_2')) {
+											dist = address.long_name;
+										}
+										if (address.types.includes('administrative_area_level_1')) {
+											city = address.long_name;
+										}
+										if (address.types.includes('country')) {
+											country = address.long_name;
+										}
+									});
+									console.log(`You at located at ${dist}, ${city}, ${country}`);
+									this.locationText = `You at located at ${dist}, ${city}, ${country}`;
+									this.locationApproved = true;
+									this.locationRequest = true;
+									localStorage.setItem('location', true);
+								}
+							});
+
+						console.log('pos', JSON.stringify(pos));
+					}, () => {
+						console.log('Get location errors');
+					});
+				} else {
+					// Browser doesn't support Geolocation
+					console.log('Browser doesn\'t support geolocation API');
+				}
+			},
 		},
 		created() {
 			let uid = this.$store.getters.currentUser.uid;
 			this.listenToProductList();
 			this.getShoppingCart({ uid, currentCart: this.$store.getters.cartItemList });
+
+			// FIXME: lousy localStorage access, need enhance with Vuex
+			/*global localStorage*/
+			if (!localStorage.getItem('location')) {
+				console.log('Location not request before');
+				this.locationRequest = true;
+			} else {
+				this.requestLocation();
+			}
 		},
 	};
 </script>

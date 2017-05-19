@@ -48,6 +48,7 @@ module.exports = {
 		},
 	},
 	devServer: {
+		host: '0.0.0.0',
 		contentBase: path.resolve(__dirname, 'src'),
 		historyApiFallback: true,
 		noInfo: true,
