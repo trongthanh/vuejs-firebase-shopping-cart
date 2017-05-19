@@ -27,13 +27,16 @@ const router = new VueRouter({
 	routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//     if (to.onlyGuest && store.getters.isLoggedIn) {
-//         next('/');
-//     } else {
-//         next();
-//     }
-// });
+router.beforeEach((to, from, next) => {
+	document.body.scrollTo(0, 0);
+	next();
+
+	// if (to.onlyGuest && store.getters.isLoggedIn) {
+    //     next('/');
+    // } else {
+    //     next();
+    // }
+});
 
 export default new Vue({
 	el: '#app',
