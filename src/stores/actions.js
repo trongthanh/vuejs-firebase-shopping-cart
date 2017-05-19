@@ -23,6 +23,8 @@ export const registerByEmail = ({ commit }, { email, password }) => (
 
 export const logout = ({ commit }) => {
 	commit('SET_CART', []); // clear current cart
+	// avoid auto sign in
+	navigator.credentials.requireUserMediation();
 	return firebaseAuth().signOut();
 };
 

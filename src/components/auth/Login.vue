@@ -30,6 +30,7 @@
 
 <script>
 	import { mapActions } from 'vuex';
+	import AppMessaging from '../../config/AppMessaging';
 	export default {
 		data() {
 			return {
@@ -52,6 +53,11 @@
 					//TODO: store user login session
 					// console.log(user);
 					this.clearMessage();
+
+					if (AppMessaging.supportNotification() && !AppMessaging.getToken()) {
+						AppMessaging.requestPermission();
+					}
+
 					this.loading = false;
 					this.$router.push({ name: 'mainpage' });
 				}).catch((error) => {
@@ -65,6 +71,22 @@
 					this.addMessage(messageObj);
 				});
 			},
+		},
+		created() {
+			// Credentials Management API
+			/* NEED implement at back end
+			navigator.credentials.get({
+				password: true, // `true` to obtain password credentials
+			}).then((cred) => {
+				if (cred) {
+					if (cred.type === 'password') {
+						console.log('cred', cred);
+					} else if (cred.type === 'federated') {
+						// login with OAuth...
+					}
+				}
+			});
+			*/
 		},
 	};
 </script>

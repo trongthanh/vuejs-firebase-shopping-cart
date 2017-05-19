@@ -11,6 +11,8 @@ const config = {
 
 firebase.initializeApp(config);
 
+export const messaging = firebase.messaging();
+
 export function firebaseListener(func) {
 	firebase.auth().onAuthStateChanged((user) => {
 		if (user) {
