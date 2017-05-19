@@ -22,7 +22,7 @@
 						></v-text-field>
 						<v-text-field
 							v-model="passwordRepeat"
-							name="password"
+							name="password-repeat"
 							label="Repeat Password"
 							:rules="[passwordValid]"
 							type="password"

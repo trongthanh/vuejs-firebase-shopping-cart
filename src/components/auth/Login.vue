@@ -19,7 +19,7 @@
 							label="Password"
 							type="password"
 						></v-text-field>
-						<v-btn block primary light @click.native.prevent="loginWithEmailLocal">Log in</v-btn>
+						<v-btn block primary light @click.native.prevent="loginWithEmailLocal" :loading="loading">Log in</v-btn>
 						<v-btn block flat light router to="/register" >Register</v-btn>
 					</v-card-text>
 				</v-card>
@@ -35,11 +35,13 @@
 			return {
 				email: '',
 				password: '',
+				loading: false,
 			};
 		},
 		methods: {
 			...mapActions(['addMessage', 'clearMessage']),
 			loginWithEmailLocal() {
+				this.loading = true;
 				let data = {
 					email: this.email,
 					password: this.password,
@@ -50,6 +52,7 @@
 					//TODO: store user login session
 					// console.log(user);
 					this.clearMessage();
+					this.loading = false;
 					this.$router.push({ name: 'mainpage' });
 				}).catch((error) => {
 					console.log('Login error', error);
