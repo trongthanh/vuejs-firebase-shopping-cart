@@ -31,7 +31,23 @@ export function loginWithEmail({ commit }, { email, password }) {
 }
 
 export function listenToProductList({ commit }) {
+	// try restore from localStorage first, then let the database sync later
+	let localProductList = null;
+
+	// console.log('Rehydrate product lists', localStorage.getItem('products'));
+	try {
+		localProductList = JSON.parse(localStorage.getItem('products'));
+	} catch (err) {
+		console.log('Product list rehydrate failed', err);
+	}
+
+	if (localProductList) {
+		console.log('rehydrating local product list');
+		commit('REHYDRATE_PRODUCT_LIST', localProductList);
+	}
+
 	return ref.child('products').on('value', (products) => {
+		console.log('updating product list');
 		console.log(products.val());
 		commit('UPDATE_PRODUCT_LIST', products.val());
 	});

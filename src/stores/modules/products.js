@@ -38,9 +38,18 @@ const state = {
 };
 
 const mutations = {
+	REHYDRATE_PRODUCT_LIST(state, productList) {
+		console.log(productList);
+		state.productList = productList;
+		state.isLoading = false;
+		console.log('Product list is rehydrated');
+	},
+
 	UPDATE_PRODUCT_LIST(state, productList) {
 		state.productList = productList;
 		state.isLoading = false;
+		// store new product list from server
+		localStorage.setItem('products', JSON.stringify(productList));
 	},
 };
 
