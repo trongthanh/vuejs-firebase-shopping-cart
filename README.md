@@ -1,4 +1,4 @@
-# vuejs-shopping-apps
+# pwa-vuejs-shopping-app
 
 > A shopping cart with VueJS
 
@@ -54,4 +54,4 @@ you'd like. Pull requests are warmly welcome.
 - @trongthanh: Responsive, Vuetify enhancement, PWA
 
 ___
-This work is licensed under a [Creative Commons Attribution 4.0 International License.](http://creativecommons.org/licenses/by/4.0/)
+© 2018 Thang Minh Vu + Tran Trong Thanh. MIT License.
